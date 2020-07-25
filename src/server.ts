@@ -1,3 +1,4 @@
+import './di'
 import express from 'express'
 import '@controllers/UsersController'
 

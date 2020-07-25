@@ -1,7 +1,8 @@
+import { inject, injectable } from 'tsyringe'
 import { User } from '@models/User'
+import { IUsersService } from '@services/UsersService'
 
-export class UsersController {
-  teste () {
-    const user = new User()
-  }
+@injectable()
+export default class UsersController {
+  constructor (@inject('IUsersService') private usersService: IUsersService) {}
 }
