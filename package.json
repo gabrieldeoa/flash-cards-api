@@ -2,7 +2,7 @@
   "name": "node-setup",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Diego Fernandes <diego.schell.f@gmail.com>",
+  "author": "Wegaar Group",
   "license": "MIT",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
