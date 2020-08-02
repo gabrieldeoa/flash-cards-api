@@ -1,18 +1,19 @@
+import { IModel } from './Base'
+
 export interface IAnswer {
   text: string;
   isCorrect: boolean;
 }
 
-export interface ICard {
-  _id: number;
+export interface ICard extends IModel {
   question: string;
-  answers: Array<IAnswer>; // IAnswer[]
+  answers: IAnswer[];
 }
 
 export class Card implements ICard {
   constructor (
-    public _id: number,
     public question: string,
-    public answers: Array<IAnswer>
+    public answers: IAnswer[],
+    public _id?: number
   ) {}
 }

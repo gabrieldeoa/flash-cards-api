@@ -1,18 +1,19 @@
+import { IModel } from './Base'
+
 export enum Visibility {
-  Public,
-  Private
+  PUBLIC,
+  PRIVATE
 }
 
-export interface IDeck {
-  _id: number;
+export interface IDeck extends IModel {
   name: string;
   visibility: Visibility
 }
 
 export class Deck implements IDeck {
   constructor (
-    public _id: number,
     public name: string,
-    public visibility: Visibility
+    public visibility: Visibility = Visibility.PUBLIC,
+    public _id?: number
   ) {}
 }
