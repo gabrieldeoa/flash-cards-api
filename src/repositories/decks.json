@@ -1,0 +1,34 @@
+[
+  {
+    "_id": 1,
+    "name": "Animals",
+    "visibility": "PUBLIC",
+    "cards": [
+      {
+        "question": "Who is the richest person in the world in 2020?",
+        "answers": [
+          {
+            "text": "Jeff Bezos",
+            "isCorrect": true,
+            "why": "US$ 113 bilhões"
+          },
+          {
+            "text": "Bill Gates",
+            "isCorrect": false,
+            "why": "US$ 98 bilhões"
+          },
+          {
+            "text": "Bernard Arnault e família",
+            "isCorrect": false,
+            "why": "US$ 76 bilhões"
+          },
+          {
+            "text": "Warren Buffett",
+            "isCorrect": false,
+            "why": "US$ 67,5 bilhões"
+          }
+        ]
+      }
+    ]
+  }
+]

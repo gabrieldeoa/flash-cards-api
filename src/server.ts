@@ -1,11 +1,20 @@
+import 'reflect-metadata'
+import { resolve } from 'path'
+import { createExpressServer, useContainer } from 'routing-controllers'
+import { container } from 'tsyringe'
+
 import './di'
-import express from 'express'
-import '@controllers/UsersController'
 
-const app = express()
+useContainer({
+  get: container.resolve.bind(container)
+})
 
-app.get('/', (request, response) => {
-  return response.json({ message: 'Hello World' })
+const app = createExpressServer({
+  cors: true,
+  classTransformer: true,
+  controllers: [
+    resolve(__dirname, 'controllers/*.ts')
+  ]
 })
 
 app.listen(3333)
