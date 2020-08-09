@@ -1,19 +1,23 @@
 import { IModel } from './Base'
+import { ICard } from './Card'
 
-export enum Visibility {
-  PUBLIC,
-  PRIVATE
+export type VISIBILITY = 'PUBLIC' | 'PRIVATE';
+export enum VISIBILITY_OPTIONS {
+  PUBLIC = 'PUBLIC',
+  PRIVATE = 'PRIVATE'
 }
 
 export interface IDeck extends IModel {
   name: string;
-  visibility: Visibility
+  visibility: VISIBILITY | string;
+  cards?: ICard[];
 }
 
 export class Deck implements IDeck {
   constructor (
     public name: string,
-    public visibility: Visibility = Visibility.PUBLIC,
+    public cards?: ICard[],
+    public visibility: VISIBILITY = VISIBILITY_OPTIONS.PUBLIC,
     public _id?: number
   ) {}
 }

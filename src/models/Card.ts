@@ -3,6 +3,7 @@ import { IModel } from './Base'
 export interface IAnswer {
   text: string;
   isCorrect: boolean;
+  why?: string;
 }
 
 export interface ICard extends IModel {
