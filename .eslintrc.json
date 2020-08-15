@@ -18,5 +18,19 @@
     "rules": {
         "no-useless-constructor": "off",
         "no-unused-vars": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["src"],
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx",
+                    ".json"
+                ]
+            }
+        }
     }
 }

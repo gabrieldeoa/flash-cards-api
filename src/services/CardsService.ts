@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe'
-import { ICardsRepository } from '@repositories/CardsRepository'
-import { ICard } from '@models/Card'
+import { ICardsRepository } from '../repositories/CardsRepository'
+import { ICard } from '../models/Card'
 
 export interface ICardsService {
   getRandom(): ICard;
