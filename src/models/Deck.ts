@@ -9,7 +9,7 @@ export enum VISIBILITY_OPTIONS {
 
 export interface IDeck extends IModel {
   name: string;
-  visibility: VISIBILITY;
+  visibility: VISIBILITY | string;
   cards?: ICard[];
 }
 
