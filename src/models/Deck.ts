@@ -1,3 +1,4 @@
+import { ObjectID } from 'mongodb'
 import { IModel } from './Base'
 import { ICard } from './Card'
 
@@ -20,6 +21,6 @@ export class Deck implements IDeck {
     public name: string,
     public cards?: ICard[],
     public visibility: VISIBILITY = VISIBILITY_OPTIONS.PUBLIC,
-    public _id?: number
+    public _id?: ObjectID
   ) {}
 }
