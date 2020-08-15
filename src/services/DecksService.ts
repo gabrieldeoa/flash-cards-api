@@ -1,10 +1,10 @@
 import { injectable, inject } from 'tsyringe'
-import { IDecksRepository } from '@repositories/DecksRepository'
-import { IDeck } from '@models/Deck'
-import { ICard } from '@models/Card'
+import { IDecksRepository } from '../repositories/DecksRepository'
+import { IDeck } from '../models/Deck'
+import { ICard } from '../models/Card'
 
 export interface IDecksService {
-  getRandom(): IDeck;
+  getRandom(): Promise<IDeck>;
   getRandomCard(deckId: number): ICard;
 }
 
