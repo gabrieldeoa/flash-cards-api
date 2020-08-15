@@ -1,21 +1,18 @@
-import { IDeck } from '@models/Deck'
-import decksData from './decks.json'
-import { GetRandomNumber } from '@utils/GetRandomNumber'
+import { Collection } from 'mongodb'
+import { inject, singleton, injectable } from 'tsyringe'
+
+import { IDeck, Deck } from '../models/Deck'
 
 export interface IDecksRepository {
-  getRandom(): IDeck;
+  getRandom(): Promise<Deck>;
 }
 
+@singleton()
+@injectable()
 export default class DecksRepository implements IDecksRepository {
-  private decks: IDeck[];
+  constructor (@inject('DecksCollection') private collection: Collection<Deck>) {}
 
-  constructor () {
-    this.decks = [...decksData]
-  }
-
-  getRandom () {
-    const position = GetRandomNumber(this.decks.length)
-
-    return this.decks[position]
+  async getRandom () {
+    return this.collection.findOne({})
   }
 }

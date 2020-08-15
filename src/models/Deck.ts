@@ -14,6 +14,8 @@ export interface IDeck extends IModel {
 }
 
 export class Deck implements IDeck {
+  static collectionName = 'decks'
+
   constructor (
     public name: string,
     public cards?: ICard[],

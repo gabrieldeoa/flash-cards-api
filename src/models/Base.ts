@@ -1,3 +1,6 @@
+import { ObjectID } from 'mongodb'
+
 export interface IModel {
-  _id?: number;
+  _id?: ObjectID;
+  collectionName?: string;
 }

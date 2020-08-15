@@ -1,6 +1,5 @@
 [
   {
-    "_id": 1,
     "name": "Animals",
     "visibility": "PUBLIC",
     "cards": [
