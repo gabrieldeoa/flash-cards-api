@@ -1,4 +1,4 @@
-import { Collection } from 'mongodb'
+import { Collection, ObjectId } from 'mongodb'
 import { inject, singleton, injectable } from 'tsyringe'
 
 import { GetRandomNumber } from '../utils/GetRandomNumber'
@@ -20,9 +20,12 @@ export default class DecksRepository implements IDecksRepository {
     return this.collection.findOne({})
   }
 
-  getRandomCard (deckId: number) {
-    const position = GetRandomNumber(this.decks.length)
+  async getRandomCard (deckId: number) {
+    const id = new ObjectId(deckId)
+    const deck = await this.collection.findOne({ _id: id })
+    const length = deck.cards.length
+    const position = GetRandomNumber(length)
 
-    return this.decks[deckId].cards[position]
+    return deck.cards[position]
   }
 }
