@@ -5,7 +5,7 @@ import { ICard } from '../models/Card'
 
 export interface IDecksService {
   getRandom(): Promise<IDeck>;
-  getRandomCard(deckId: number): Promise<ICard>;
+  getRandomCard(deckId: string): Promise<ICard>;
 }
 
 @injectable()

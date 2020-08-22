@@ -8,7 +8,7 @@ import { IDeck, Deck } from '../models/Deck'
 
 export interface IDecksRepository {
   getRandom(): Promise<IDeck>;
-  getRandomCard(deckId: number): Promise<ICard>;
+  getRandomCard(deckId: string): Promise<ICard>;
 }
 
 @singleton()
@@ -20,7 +20,7 @@ export default class DecksRepository implements IDecksRepository {
     return this.collection.findOne({})
   }
 
-  async getRandomCard (deckId: number) {
+  async getRandomCard (deckId: string) {
     const id = new ObjectId(deckId)
     const deck = await this.collection.findOne({ _id: id })
     const length = deck.cards.length
