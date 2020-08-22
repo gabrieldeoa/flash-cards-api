@@ -3,7 +3,7 @@ import { ICardsRepository } from '../repositories/CardsRepository'
 import { ICard } from '../models/Card'
 
 export interface ICardsService {
-  getRandom(): ICard;
+  getRandom(): Promise<ICard>;
 }
 
 @injectable()

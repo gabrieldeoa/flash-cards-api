@@ -1,4 +1,4 @@
-import { injectable, inject } from 'tsyringe'
+import { injectable, inject, singleton } from 'tsyringe'
 import { shuffle } from 'lodash'
 
 import { ICard } from '../models/Card'
@@ -8,7 +8,7 @@ import { GetRandomNumber } from '../utils/GetRandomNumber'
 export interface ICardsRepository {
   getRandom(randomizeAnswers?: boolean): Promise<ICard>;
 }
-
+@singleton()
 @injectable()
 export default class CardsRepository implements ICardsRepository {
   constructor (@inject('IDecksRepository') private decksRepository: IDecksRepository) {}
@@ -19,12 +19,13 @@ export default class CardsRepository implements ICardsRepository {
     const position = GetRandomNumber(length)
 
     const card = cards[position]
+    const answers = cards[position].answers
 
     return !randomizeAnswers
       ? card
       : {
         ...card,
-        answers: shuffle(card.answers)
+        answers: shuffle(answers)
       }
   }
 }

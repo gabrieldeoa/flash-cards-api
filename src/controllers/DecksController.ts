@@ -1,6 +1,6 @@
 import { JsonController, Get, Param } from 'routing-controllers'
 import { injectable, inject } from 'tsyringe'
-import { IDecksService } from '@services/DecksService'
+import { IDecksService } from '../services/DecksService'
 
 @injectable()
 @JsonController('/decks')

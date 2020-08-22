@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { createExpressServer, useContainer } from 'routing-controllers'
 import { container } from 'tsyringe'
 
+import config from './config/Config'
 import configDI from './config/DI'
 import { MongoDB } from './config/MongoDB'
 
@@ -23,5 +24,6 @@ import { MongoDB } from './config/MongoDB'
     ]
   })
 
-  app.listen(3333)
+  app.listen(config.ServerPort)
+  console.log(`Listening on port: ${config.ServerPort}`)
 })()
