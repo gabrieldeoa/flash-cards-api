@@ -16,7 +16,7 @@ export default class DecksService implements IDecksService {
     return this.decksRepository.getRandom()
   }
 
-  getRandomCard (deckId: number) {
+  getRandomCard (deckId: string) {
     return this.decksRepository.getRandomCard(deckId)
   }
 }
