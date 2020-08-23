@@ -13,7 +13,7 @@ export default class DecksController {
   }
 
   @Get('/:deckId/random-card')
-  getRandomCard (@Param('deckId') deckId: number) {
+  getRandomCard (@Param('deckId') deckId: string) {
     return this.decksService.getRandomCard(deckId)
   }
 }

@@ -5,20 +5,20 @@ import { container } from 'tsyringe'
 import configDI from '../../config/DI'
 
 import { MongoDB } from '../../config/MongoDB'
-import { ICardsRepository } from '../../repositories/CardsRepository'
+import { IDecksRepository } from '../../repositories/DecksRepository'
 import decksData from './_mocks/decks.json'
 import { IDeck } from 'models/Deck'
 
 let deckCollection: Collection<IDeck>
-let sut: ICardsRepository
+let sut: IDecksRepository
 
-describe('CardsRepository', () => {
+describe('DecksRepository', () => {
   beforeAll(async () => {
     const db = (await MongoDB.createConnection()).db
     configDI(db)
 
     deckCollection = await MongoDB.getCollection('decks')
-    sut = container.resolve('ICardsRepository')
+    sut = container.resolve('IDecksRepository')
   })
 
   beforeEach(async () => {
@@ -30,19 +30,20 @@ describe('CardsRepository', () => {
   })
 
   describe('getRandom', () => {
-    it('should get a random card in a random deck', async () => {
+    it('should get a random deck', async () => {
       deckCollection.insertMany(decksData)
-      const result = await sut.getRandom(true)
+      const result = await sut.getRandom()
 
       expect(result).toBeTruthy()
-      expect(result.question).toBeTruthy()
-      expect(result.answers).toBeTruthy()
-      expect(result.answers.length).toBeGreaterThan(0)
+      expect(result.name).toBeTruthy()
+      expect(result.visibility).toBeTruthy()
+      expect(result.cards.length).toBeGreaterThan(0)
     })
 
-    it('should get a random card in a random deck without randomize answers', async () => {
+    it('should get a random card on specific deck', async () => {
       deckCollection.insertMany(decksData)
-      const result = await sut.getRandom(false)
+      const { _id } = await deckCollection.findOne({})
+      const result = await sut.getRandomCard(_id)
 
       expect(result).toBeTruthy()
       expect(result.question).toBeTruthy()
