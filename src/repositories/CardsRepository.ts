@@ -13,7 +13,7 @@ export interface ICardsRepository {
 export default class CardsRepository implements ICardsRepository {
   constructor (@inject('IDecksRepository') private decksRepository: IDecksRepository) {}
 
-  async getRandom (randomizeAnswers?: boolean) {
+  async getRandom (randomizeAnswers = true) {
     const { cards } = await this.decksRepository.getRandom()
     const length = cards.length
     const position = GetRandomNumber(length)
