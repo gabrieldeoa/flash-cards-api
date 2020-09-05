@@ -4,11 +4,11 @@ import { inject, singleton, injectable } from 'tsyringe'
 import { GetRandomNumber } from '../utils/GetRandomNumber'
 
 import { ICard } from '../models/Card'
-import { IDeck, Deck } from '../models/Deck'
+import { IDeck } from '../models/Deck'
 
 export interface IDecksRepository {
   getRandom(): Promise<IDeck>;
-  getRandomCard(deckId: number): Promise<ICard>;
+  getRandomCard(deckId: string): Promise<ICard>;
 }
 
 @singleton()
@@ -17,10 +17,16 @@ export default class DecksRepository implements IDecksRepository {
   constructor (@inject('DecksCollection') private collection: Collection<IDeck>) {}
 
   async getRandom () {
-    return this.collection.findOne({})
+    const random = await this.collection.aggregate([
+      {
+        $sample: { size: 1 }
+      }
+    ]).toArray()
+
+    return random[0]
   }
 
-  async getRandomCard (deckId: number) {
+  async getRandomCard (deckId: string) {
     const id = new ObjectId(deckId)
     const deck = await this.collection.findOne({ _id: id })
     const length = deck.cards.length

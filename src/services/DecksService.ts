@@ -5,7 +5,7 @@ import { ICard } from '../models/Card'
 
 export interface IDecksService {
   getRandom(): Promise<IDeck>;
-  getRandomCard(deckId: number): Promise<ICard>;
+  getRandomCard(deckId: string): Promise<ICard>;
 }
 
 @injectable()
@@ -16,7 +16,7 @@ export default class DecksService implements IDecksService {
     return this.decksRepository.getRandom()
   }
 
-  getRandomCard (deckId: number) {
+  getRandomCard (deckId: string) {
     return this.decksRepository.getRandomCard(deckId)
   }
 }
