@@ -56,4 +56,4 @@ const decks: IDeck = {
   cards: cards
 }
 
-export = decks
+export default decks
