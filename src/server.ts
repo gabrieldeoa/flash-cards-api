@@ -20,7 +20,7 @@ import { MongoDB } from './config/MongoDB'
     cors: true,
     classTransformer: true,
     controllers: [
-      resolve(__dirname, 'controllers/*.ts')
+      resolve(__dirname, 'controllers/*.*')
     ]
   })
 
